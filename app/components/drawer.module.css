@@ -1,0 +1,45 @@
+
+.root {
+  /* border: 2px solid #ccc; */
+  overflow: hidden;
+  display: flex;
+  height: 100vh; 
+  /* background-color: rgba(159, 255, 34, 0.2); */
+}
+
+.content {
+  flex: 1;
+  padding: 0px;
+  overflow: auto;
+  position: relative;
+  color: #2C2E2F;
+}
+
+.buttons {
+  /* flex: 1;
+  position: sticky;
+  display: flex;
+  column-gap: 8px;
+  transition-duration: 0.2s; */
+  /* padding: 16px; */
+ 
+  /* top: -16px;
+  right: -16px;
+  left: -16px; */
+ 
+  /* justify-content: center;
+  align-items: flex-start; */
+  
+  /* background-color: #3e4fec; */
+  
+}
+
+
+
+.sideBar {
+   background-color: #2C2E2F; 
+   color: #F7FFF1; 
+  width: 100vw;
+  height: 100vh;
+}
+
