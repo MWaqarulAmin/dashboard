@@ -1,21 +1,35 @@
 import * as React from "react";
-import { Tab, TabList } from "@fluentui/react-components";
-import type { TabListProps } from "@fluentui/react-components";
 import styles from "./companyList.module.css";
 
-const CompanyList = () => {
+interface CompanyListProps {
+  onButtonClick: (filter: string) => void;
+  activeCount?: number;
+  closedCount?: number;
+  allCount?: number;
+}
+
+const CompanyList: React.FC<CompanyListProps> = ({
+  onButtonClick,
+  activeCount,
+  closedCount,
+  allCount,
+}) => {
   return (
-    <>
-      <h1>Company List</h1>
-   
-        <div className={styles.tabList}>
-          <p className="tabName">Active Companies</p>
-          <p className="tabName">Closed Companies</p>
-          <p className="tabName">All Companies</p>
-        </div>
-  
-    </>
+    <div className={styles.buttonsBar}>
+      <h1> {activeCount !== undefined ? `${activeCount}` : ""} </h1>
+
+      <p   onClick={() => onButtonClick("true")}>
+        Active Companies
+      </p>
+
+      <h1>{closedCount !== undefined ? `${closedCount}` : ""}</h1>
+      <p onClick={() => onButtonClick("false")}>
+        Closed Companies
+      </p>
+
+      <h1>{allCount !== undefined ? `${allCount}` : ""} </h1>
+      <p onClick={() => onButtonClick("all")}>All Companies</p>
+    </div>
   );
 };
-
 export default CompanyList;

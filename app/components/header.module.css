@@ -1,12 +1,9 @@
-/* Add your global styles here */
-
 .header {
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 10px;
   /* background-color: #333; */
-  color: #2C2E2F;
+  color: #2c2e2f;
   width: 100%;
 }
-
