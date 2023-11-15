@@ -1,0 +1,31 @@
+.buttonsBar {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  padding: 10px;
+  background-color: #f3ffeb;
+  padding: 25px 20px;
+  font-size: 20px;
+  color: #2c2e2f;
+
+  .count {
+    color: #62ba27;
+    font-weight: 500;
+    padding-right: 14px;
+    font-size: 50px;
+  }
+
+  .companies {
+    color: #737374;
+    cursor: pointer;
+    padding-right: 100px;
+    font-size: 18px;
+  }
+
+  .companyBox {
+    display: flex;
+    align-items: center;
+  }
+}

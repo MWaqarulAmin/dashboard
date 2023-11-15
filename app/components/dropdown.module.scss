@@ -1,0 +1,25 @@
+$tokens-color-neutral-background-1: rgb(255, 255, 255);
+
+.useMenuListContainerStyles {
+  &__container {
+    background-color: $tokens-color-neutral-background-1;
+    width: 160px;
+    height: auto;
+    padding: 10px 0 0 10px;
+    margin-top: 160px;
+    position: absolute;
+    box-shadow: 0 2px 16px rgba(0, 0, 0, 0.1);
+  }
+}
+
+.menuItem {
+  color: #454545;
+  font-size: 13px;
+  display: flex;
+  align-items: center;
+  padding-bottom: 10px;
+}
+
+.icon {
+  margin-right: 8px;
+}

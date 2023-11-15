@@ -6,10 +6,11 @@ import {
   TableHeader,
   TableRow,
 } from "@fluentui/react-components";
-import { MoreVertical24Regular } from "@fluentui/react-icons";
+import { MoreVertical24Regular, Search20Regular } from "@fluentui/react-icons";
 import * as React from "react";
 import { useState } from "react";
-import styles from "./table.module.css";
+import styles from "./table.module.scss";
+import { PopoverComponent } from "./popover";
 
 interface TableComponentProps {
   data: Company[];
@@ -54,25 +55,33 @@ const TableComponent: React.FC<TableComponentProps> = ({
     : filteredData;
 
   return (
-    <div>
-      <input
-        type="text"
-        placeholder="Search by company name"
-        value={searchQuery}
-        onChange={(e) => setSearchQuery(e.target.value)}
-      />
+    <div className={styles.table}>
+      {filter === "true" && <h2>Active Companies</h2>}
+      {filter === "false" && <h2>Closed Companies</h2>}
+      {filter === "all" && <h2>All Companies</h2>}
+
+      <div className={styles.searchContainer}>
+        <Search20Regular className={styles.searchIcon} />
+        <input
+          className={styles.searchBox}
+          type="text"
+          placeholder="Search"
+          value={searchQuery}
+          onChange={(e) => setSearchQuery(e.target.value)}
+        />
+      </div>
+
       <Table aria-label="Default table">
         <TableHeader>
           <TableRow>
-            <th>ID</th>
             <th>Company Name</th>
             <th>Company Type</th>
             <th>Company Code</th>
             <th>Contact Email</th>
             <th>Phone</th>
-            <th>Active</th>
           </TableRow>
         </TableHeader>
+
         <TableBody>
           {searchedData.map((company) => (
             <TableRow
@@ -80,46 +89,28 @@ const TableComponent: React.FC<TableComponentProps> = ({
               onMouseEnter={() => setHoveredCompanyId(company.id)}
               onMouseLeave={() => setHoveredCompanyId(null)}
             >
-              <TableCell>{company.id}</TableCell>
               <TableCell>{company.companyName}</TableCell>
               <TableCell>{company.companyType}</TableCell>
               <TableCell>{company.companyCode}</TableCell>
               <TableCell>{company.contactEmail}</TableCell>
               <TableCell>{company.Phone}</TableCell>
               <TableCell>
+              <PopoverComponent 
+                  />
                 {/* {hoveredCompanyId === company.id ? (
-                  <button
+                  <div
                     onClick={() =>
                       handleToggleStatus(company.id, company.active)
                     }
-                  >
-                    {company.active ? "❌" : "✅"}
-                  </button>
-                ) : company.active ? (
-                  "✅"
-                ) : (
-                  "❌"
-                )} */}
-                
-                
-                {hoveredCompanyId === company.id ? (
-                  <button
-                    onClick={() =>
-                      handleToggleStatus(company.id, company.active)
-                    }
+                    className={styles.mark}
                   >
                     {company.active ? "Mark as Closed" : "Mark as Active"}
-                  </button>
+                  </div>
                 ) : company.active ? (
-                  <MoreVertical24Regular 
-                className={styles.options}/>
+                  <MoreVertical24Regular className={styles.options} />
                 ) : (
-                  <MoreVertical24Regular 
-                  className={styles.options}/>
-                )}
-
-                {/* <MoreVertical24Regular 
-                className={styles.options}/> */}
+                  <MoreVertical24Regular className={styles.options} />
+                )} */}
               </TableCell>
             </TableRow>
           ))}

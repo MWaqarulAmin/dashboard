@@ -16,7 +16,7 @@
       "companyCode": "ABC1",
       "contactEmail": "contact@rmaol.com",
       "Phone": "+123324234232",
-      "active": true
+      "active": false
     },
     {
       "id": 3,
@@ -43,7 +43,7 @@
       "companyCode": "ABC1",
       "contactEmail": "contact@rmaol.com",
       "Phone": "+123324234232",
-      "active": true
+      "active": false
     },
     {
       "id": 6,

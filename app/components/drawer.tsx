@@ -12,7 +12,7 @@ import {
   Fluent24Filled,
   Building24Regular,
 } from "@fluentui/react-icons";
-import styles from "./drawer.module.css";
+import styles from "./drawer.module.scss";
 import TableComponent from "./table";
 import Header from "./header";
 import CompanyList from "./companyList";
@@ -92,7 +92,7 @@ export const DrawerComponent = () => {
             </DrawerHeaderTitle>
           </DrawerHeader>
           <DrawerBody>
-            <div className={styles.drawerbody}>
+            <div className={styles.drawerBody}>
               <p>Drawezr content</p>
               <p>Drawer content</p>
               <p>Drawer content</p>
@@ -102,22 +102,25 @@ export const DrawerComponent = () => {
           </DrawerBody>
         </div>
       </InlineDrawer>
+
       <div className={styles.content}>
         <div className={styles.buttons}>
           <Header leftOpen={leftOpen} setLeftOpen={setLeftOpen} />
         </div>
-
-        <CompanyList
-          onButtonClick={handleButtonClick}
-          activeCount={activeCount}
-          closedCount={closedCount}
-          allCount={allCount}
-        />
-        <TableComponent
-          data={data}
-          filter={filter}
-          onToggleStatus={handleToggleStatus}
-        />
+        <h1 className={styles.companyList}>Company List</h1>
+        <div className={styles.components}>
+          <CompanyList
+            onButtonClick={handleButtonClick}
+            activeCount={activeCount}
+            closedCount={closedCount}
+            allCount={allCount}
+          />
+          <TableComponent
+            data={data}
+            filter={filter}
+            onToggleStatus={handleToggleStatus}
+          />
+        </div>
       </div>
     </div>
   );
