@@ -1,7 +1,44 @@
 .options {
   cursor: pointer;
+  padding: 0;
+  margin: 0;
+  border: none !important;
 }
 
-.contentHeader {
-  
+.popoverContainer {
+  background-color: rgb(255, 255, 255);
+  box-shadow: 0 2px 16px rgba(0, 0, 0, 0.26);
+  border-bottom: 0.5px solid #a0a0a070;
+  border-radius: 4px;
+  padding: 10px;
+  color: rgba(0, 0, 0, 0.897);
+  margin: 0;
+  display: flex;
+  width: 180px;
+  font-size: 14px;
+  font-weight: 400;
+  align-items: center;
+
+  .contentHeader {
+    padding-left: 8px;
+  }
+
+  .popoverSurface {
+     border: none !important;
+     box-shadow: none !important;
+
+    border-bottom-width: 0px;
+  border-top-style: none !important;
+  // border-bottom-color: red;
+  // border-top-color: var(--colorTransparentStroke);
+
+    border-top-style: none !important;
+
+    border-bottom-width: 0px;
+
+    border-top-width: 0px;
+
+    box-shadow: none !important;
+
+  }
 }

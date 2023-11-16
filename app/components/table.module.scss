@@ -1,5 +1,8 @@
 .table {
   margin-top: 30px;
+  margin-bottom: 40px;
+  padding-bottom: 40px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
   border: #45454518 1px solid;
   border-radius: 12px;
 }
@@ -11,43 +14,98 @@
 .mark {
   background-color: rgb(255, 255, 255);
   box-shadow: 0 2px 16px rgba(0, 0, 0, 0.1);
-  color: #454545;
-  font-size: 14px;
-  display: flex;
-  align-items: center;
+
+  font-size: 12px;
+  // display: flex;
+  // align-items: baseline;
+  // justify-content: left;
   border: #49484818 1px solid;
-  border-radius: 2px;
   cursor: pointer;
-  padding: 20px;
-  width: fit-content;
+  margin: 0;
+  border-bottom: 0.5px solid #a0a0a070;
+  border-radius: 4px;
+  padding: 6px;
+  color: rgba(0, 0, 0, 0.897);
+  width: 180px;
+  font-weight: 400;
 }
 
-.table h2 {
-  font-size: 30px;
-  font-weight: 400;
-  color: rgba(22, 22, 22, 0.562);
-  margin: 30px 30px 0;
+
+.markDiv{
+  display: flex;
+  margin: 0;
+ 
+
+ 
+ }
+
+ .markText {
+  padding-left: 6px;
+}
+
+
+.table {
+  .tableHeading {
+    font-size: 26px;
+    color: rgba(22, 22, 22, 0.507);
+    margin: 30px 30px 0;
+  }
+
+ 
+  .tableHeader {
+    // background-color: #454545;
+    // display: flex;
+    align-items: flex-start;
+  
+  }
+
+  .tableRow {
+    color: rgba(22, 22, 22, 0.658);
+    font-size: 14px;
+    font-weight: 500;
+  }
+
+  th,
+  td {
+    text-align: left;
+    padding: 8px; 
+  }
+
+  th {
+    font-size: 16px;
+    font-weight: 600;
+  }
+
+  .companyName{
+    padding: 0 100px 0 45px;
+    width: 46%;
+  }
+
+  .markCell {
+
+    display: flex;
+    justify-content: right;
+    padding-right: 35px;
+  }
 }
 
 .searchBox {
   margin: 30px 30px 30px;
   padding: 6px;
   padding-left: 30px;
-  border:  rgba(0, 0, 0, 0.562) 1px solid;
+  border: rgba(0, 0, 0, 0.562) 1px solid;
   border-radius: 4px;
   width: 20%;
 }
 
-
 .searchContainer {
   position: relative;
   color: #000000c0;
-}
 
-.searchIcon {
-  position: absolute;
-  top: 50%;
-  left: 40px;
-  transform: translateY(-50%);
+  .searchIcon {
+    position: absolute;
+    top: 50%;
+    left: 40px;
+    transform: translateY(-50%);
+  }
 }
-

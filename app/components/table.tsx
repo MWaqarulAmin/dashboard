@@ -6,11 +6,11 @@ import {
   TableHeader,
   TableRow,
 } from "@fluentui/react-components";
-import { MoreVertical24Regular, Search20Regular } from "@fluentui/react-icons";
+import { MoreVertical24Regular, Search20Regular, Play20Regular , Delete20Regular} from "@fluentui/react-icons";
 import * as React from "react";
 import { useState } from "react";
 import styles from "./table.module.scss";
-import { PopoverComponent } from "./popover";
+
 
 interface TableComponentProps {
   data: Company[];
@@ -56,9 +56,9 @@ const TableComponent: React.FC<TableComponentProps> = ({
 
   return (
     <div className={styles.table}>
-      {filter === "true" && <h2>Active Companies</h2>}
-      {filter === "false" && <h2>Closed Companies</h2>}
-      {filter === "all" && <h2>All Companies</h2>}
+      {filter === "true" && <p className={styles.tableHeading}>Active Companies</p>}
+      {filter === "false" && <p className={styles.tableHeading}>Closed Companies</p>}
+      {filter === "all" && <p className={styles.tableHeading}>All Companies</p>}
 
       <div className={styles.searchContainer}>
         <Search20Regular className={styles.searchIcon} />
@@ -72,9 +72,9 @@ const TableComponent: React.FC<TableComponentProps> = ({
       </div>
 
       <Table aria-label="Default table">
-        <TableHeader>
+        <TableHeader className={styles.tableHeader}>
           <TableRow>
-            <th>Company Name</th>
+            <th className={styles.companyName}>Company Name</th>
             <th>Company Type</th>
             <th>Company Code</th>
             <th>Contact Email</th>
@@ -85,18 +85,21 @@ const TableComponent: React.FC<TableComponentProps> = ({
         <TableBody>
           {searchedData.map((company) => (
             <TableRow
+              className={styles.tableRow}
               key={company.id}
               onMouseEnter={() => setHoveredCompanyId(company.id)}
               onMouseLeave={() => setHoveredCompanyId(null)}
             >
-              <TableCell>{company.companyName}</TableCell>
+              <TableCell className={styles.companyName}>
+                {company.companyName}
+              </TableCell>
               <TableCell>{company.companyType}</TableCell>
               <TableCell>{company.companyCode}</TableCell>
               <TableCell>{company.contactEmail}</TableCell>
               <TableCell>{company.Phone}</TableCell>
-              <TableCell>
-              <PopoverComponent 
-                  />
+              <TableCell className={styles.markCell}>
+                {/* <PopoverComponent 
+                  /> */}
                 {/* {hoveredCompanyId === company.id ? (
                   <div
                     onClick={() =>
@@ -111,6 +114,40 @@ const TableComponent: React.FC<TableComponentProps> = ({
                 ) : (
                   <MoreVertical24Regular className={styles.options} />
                 )} */}
+
+                {hoveredCompanyId === company.id ? (
+                  <div
+                    onClick={() =>
+                      handleToggleStatus(company.id, company.active)
+                    }
+                    className={styles.mark}
+                  >
+                    {/* {company.active ? "   Mark as Closed" : "Mark as Active"} */}
+
+                    {company.active ? <div className={styles.markDiv}>
+                      <Delete20Regular/>
+                      <p className={styles.markText}>Mark as Closed</p>
+                    
+                    </div> : 
+                    <div className={styles.markDiv}>
+                      <Play20Regular/>
+                      <p className={styles.markText}>Mark as Active</p>
+                    
+                    </div>
+
+                  
+                    
+                    }
+
+
+                  </div>
+                ) : company.active ? (
+                  <MoreVertical24Regular className={styles.options} />
+                ) : (
+                  <MoreVertical24Regular className={styles.options} />
+                
+                )}
+                  
               </TableCell>
             </TableRow>
           ))}

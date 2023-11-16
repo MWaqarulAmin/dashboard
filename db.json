@@ -7,7 +7,7 @@
       "companyCode": "ABC1",
       "contactEmail": "contact@rmaol.com",
       "Phone": "+123324234232",
-      "active": false
+      "active": true
     },
     {
       "id": 2,
@@ -25,7 +25,7 @@
       "companyCode": "ABC1",
       "contactEmail": "contact@rmaol.com",
       "Phone": "+123324234232",
-      "active": true
+      "active": false
     },
     {
       "id": 4,
@@ -52,7 +52,7 @@
       "companyCode": "ABC1",
       "contactEmail": "contact@rmaol.com",
       "Phone": "+123324234232",
-      "active": true
+      "active": false
     },
     {
       "id": 7,
@@ -61,7 +61,7 @@
       "companyCode": "ABC1",
       "contactEmail": "contact@rmaol.com",
       "Phone": "+123324234232",
-      "active": true
+      "active": false
     },
     {
       "id": 8,
@@ -70,7 +70,7 @@
       "companyCode": "ABC1",
       "contactEmail": "contact@rmaol.com",
       "Phone": "+123324234232",
-      "active": true
+      "active": false
     },
     {
       "id": 9,
@@ -79,7 +79,7 @@
       "companyCode": "ABC1",
       "contactEmail": "contact@rmaol.com",
       "Phone": "+123324234232",
-      "active": true
+      "active": false
     },
     {
       "id": 10,
@@ -88,7 +88,7 @@
       "companyCode": "ABC1",
       "contactEmail": "contact@rmaol.com",
       "Phone": "+123324234232",
-      "active": true
+      "active": false
     },
     {
       "id": 11,
@@ -97,7 +97,7 @@
       "companyCode": "ABC1",
       "contactEmail": "contact@rmaol.com",
       "Phone": "+123324234232",
-      "active": true
+      "active": false
     },
     {
       "id": 12,
@@ -106,7 +106,7 @@
       "companyCode": "ABC1",
       "contactEmail": "contact@rmaol.com",
       "Phone": "+123324234232",
-      "active": true
+      "active": false
     },
     {
       "id": 13,

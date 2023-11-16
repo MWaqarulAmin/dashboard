@@ -17,6 +17,7 @@ import TableComponent from "./table";
 import Header from "./header";
 import CompanyList from "./companyList";
 import { useEffect, useState } from "react";
+import SideBar from "./sideBar";
 
 interface Company {
   id: number;
@@ -75,8 +76,12 @@ export const DrawerComponent = () => {
 
   return (
     <div className={styles.root}>
+    
       <InlineDrawer open={leftOpen} separator>
+  
         <div className={styles.sideBar}>
+          <div className={styles.sideBarIcon}>Icon 1</div>
+          <div className={styles.sideBarIcon}>Icon 2</div>
           <DrawerHeader>
             <DrawerHeaderTitle
               action={

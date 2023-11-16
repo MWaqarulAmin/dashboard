@@ -1,0 +1,21 @@
+/* Sidebar.module.scss */
+.sidebar {
+  width: 60px; /* Set your desired initial width */
+  height: 100vh;
+  background-color: #333;
+  color: #fff;
+  transition: width 0.3s ease;
+  overflow-x: hidden;
+}
+
+.expanded {
+  width: 200px; /* Set your desired expanded width */
+}
+
+.toggleButton {
+  background: none;
+  border: none;
+  color: #fff;
+  cursor: pointer;
+  padding: 10px;
+}

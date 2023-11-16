@@ -5,29 +5,33 @@ import {
   PopoverSurface,
   Button,
 } from "@fluentui/react-components";
-import { MoreVertical24Regular } from "@fluentui/react-icons";
+import { MoreVertical24Regular, Delete20Regular } from "@fluentui/react-icons";
 import styles from "./popoverComponent.module.scss";
 
 const ExampleContent = () => {
   return (
-    <div>
-      <h3 className={styles.contentHeader}>Popover content</h3>
-
-      <div>This popover has an arrow pointing to its target</div>
+    <div className={styles.popoverContainer}>
+      <Delete20Regular />
+      <p className={styles.contentHeader}>Mark as Closed</p>
     </div>
   );
 };
 
-export const PopoverComponent = () => (
-  <Popover positioning="before">
-    <PopoverTrigger disableButtonEnhancement>
-      <Button>
-        <MoreVertical24Regular />{" "}
-      </Button>
-    </PopoverTrigger>
-
-    <PopoverSurface>
-      <ExampleContent />
-    </PopoverSurface>
-  </Popover>
-);
+export const PopoverComponent = () => {
+  return (
+    <Popover positioning="before">
+      <PopoverTrigger disableButtonEnhancement>
+        <Button>
+          <MoreVertical24Regular />
+        </Button>
+      </PopoverTrigger>
+      {/* <div className={styles.popoverSurface}>
+        <ExampleContent />
+      </div> */}
+      <PopoverSurface className={styles.popoverSurface}>
+        {/* <div><ExampleContent /></div> */}
+        
+      </PopoverSurface>
+    </Popover>
+  );
+};
