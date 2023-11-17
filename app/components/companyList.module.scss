@@ -4,18 +4,17 @@
   justify-content: space-between;
   align-items: center;
   width: 100%;
-  padding: 10px;
+  padding: 0;
   background-color: #f3ffeb;
-  padding: 25px 20px;
-  // font-size: 210px;
-  // color: #df3333e1;
+  padding: 0;
 
   .count {
     color: #62ba27;
     font-weight: 600;
     padding-right: 12px;
+    padding-left: 20px;
+    margin-bottom: 18px;
     font-size: 50px;
-  
   }
 
   .companies {
@@ -24,10 +23,34 @@
     padding-right: 100px;
     font-size: 18px;
     font-weight: 100;
+    padding-bottom: 14px;
   }
 
   .companyBox {
     display: flex;
     align-items: center;
+    flex-direction: row;
+    justify-content: left;
+    width: 28%;
+    margin-top: 20px;
+    // background-color: #6fff0f;
+  }
+}
+
+.activeCompany {
+  position: relative;
+  padding-top: 0;
+  margin-top: 0;
+
+  &:after {
+    margin-top: 0;
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 2px;
+    background-color: #62ba27;
+    box-shadow: 0 1px 4px rgba(2, 2, 2, 0.466);
   }
 }

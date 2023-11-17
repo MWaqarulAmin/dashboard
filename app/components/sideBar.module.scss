@@ -1,15 +1,14 @@
-/* Sidebar.module.scss */
 .sidebar {
-  width: 60px; /* Set your desired initial width */
+  width: 60px;
   height: 100vh;
   background-color: #333;
   color: #fff;
   transition: width 0.3s ease;
   overflow-x: hidden;
-}
 
-.expanded {
-  width: 200px; /* Set your desired expanded width */
+  &.expanded {
+    width: 200px;
+  }
 }
 
 .toggleButton {

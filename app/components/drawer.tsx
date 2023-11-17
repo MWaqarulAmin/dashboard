@@ -2,22 +2,17 @@
 import * as React from "react";
 import {
   DrawerBody,
-  DrawerHeader,
-  DrawerHeaderTitle,
   InlineDrawer,
-  Button,
 } from "@fluentui/react-components";
 import {
-  Dismiss24Regular,
-  Fluent24Filled,
-  Building24Regular,
+  Fluent32Filled,  Building32Filled,
 } from "@fluentui/react-icons";
 import styles from "./drawer.module.scss";
 import TableComponent from "./table";
 import Header from "./header";
 import CompanyList from "./companyList";
 import { useEffect, useState } from "react";
-import SideBar from "./sideBar";
+import {SortTable} from "./sortTable";
 
 interface Company {
   id: number;
@@ -33,6 +28,12 @@ export const DrawerComponent = () => {
   const [leftOpen, setLeftOpen] = React.useState(false);
   const [data, setData] = useState<Company[]>([]);
   const [filter, setFilter] = useState("true");
+
+  // --------------------------------------
+  const [fluentActive, setFluentActive] = useState(false);
+  const [companiesActive, setCompaniesActive] = useState(false);
+  
+  // -----------------------------------------
 
   useEffect(() => {
     fetch("http://localhost:3001/companies")
@@ -76,43 +77,46 @@ export const DrawerComponent = () => {
 
   return (
     <div className={styles.root}>
-    
-      <InlineDrawer open={leftOpen} separator>
-  
+      <div className={styles.permanentSideBar}>
+        <Fluent32Filled className={styles.sideIcon1}/>
+        <Building32Filled className={styles.sideIcon2}/>
+      </div>
+      <InlineDrawer open={leftOpen} separator   style={{ width: "200px" }} className={styles.inlineDrawer}>
         <div className={styles.sideBar}>
-          <div className={styles.sideBarIcon}>Icon 1</div>
-          <div className={styles.sideBarIcon}>Icon 2</div>
-          <DrawerHeader>
-            <DrawerHeaderTitle
-              action={
-                <Button
-                  appearance="subtle"
-                  aria-label="Close"
-                  icon={<Dismiss24Regular />}
-                  onClick={() => setLeftOpen(false)}
-                />
-              }
-            >
-              HEADER
-            </DrawerHeaderTitle>
-          </DrawerHeader>
           <DrawerBody>
             <div className={styles.drawerBody}>
-              <p>Drawezr content</p>
-              <p>Drawer content</p>
-              <p>Drawer content</p>
-              <Fluent24Filled />
-              <Building24Regular />
+            <p
+  className={fluentActive ? `${styles.fluentText} ${styles.active}` : styles.fluentText}
+  onClick={() => {
+    setFluentActive(!fluentActive);
+    setCompaniesActive(false); 
+
+  }}
+>
+  Fluent 2 Web
+</p>
+<p
+  className={companiesActive ? `${styles.companiesText} ${styles.active}` : styles.companiesText}
+  onClick={() => {
+    setCompaniesActive(!companiesActive);
+    setFluentActive(false); 
+
+  }}
+>
+  Companies
+</p>
+
             </div>
           </DrawerBody>
         </div>
       </InlineDrawer>
-
       <div className={styles.content}>
         <div className={styles.buttons}>
           <Header leftOpen={leftOpen} setLeftOpen={setLeftOpen} />
         </div>
-        <h1 className={styles.companyList}>Company List</h1>
+        <h1 className={styles.companyList}
+        
+        >Company List</h1>
         <div className={styles.components}>
           <CompanyList
             onButtonClick={handleButtonClick}
@@ -120,11 +124,16 @@ export const DrawerComponent = () => {
             closedCount={closedCount}
             allCount={allCount}
           />
-          <TableComponent
+          {/* <TableComponent
             data={data}
             filter={filter}
             onToggleStatus={handleToggleStatus}
-          />
+          /> */}
+
+          <SortTable 
+            data={data}
+            filter={filter}
+            onToggleStatus={handleToggleStatus}/>
         </div>
       </div>
     </div>

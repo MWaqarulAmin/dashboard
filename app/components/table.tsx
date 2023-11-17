@@ -5,12 +5,20 @@ import {
   TableCell,
   TableHeader,
   TableRow,
+  TableHeaderCell,
 } from "@fluentui/react-components";
-import { MoreVertical24Regular, Search20Regular, Play20Regular , Delete20Regular} from "@fluentui/react-icons";
+import {
+  useTableSort, 
+} from "@fluentui/react-components";
+import {
+  MoreVertical24Regular,
+  Search20Regular,
+  Play20Regular,
+  Delete20Regular,
+} from "@fluentui/react-icons";
 import * as React from "react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import styles from "./table.module.scss";
-
 
 interface TableComponentProps {
   data: Company[];
@@ -35,6 +43,7 @@ const TableComponent: React.FC<TableComponentProps> = ({
 }) => {
   const [searchQuery, setSearchQuery] = useState("");
   const [hoveredCompanyId, setHoveredCompanyId] = useState<number | null>(null);
+  const [markVisible, setMarkVisible] = useState<number | null>(null);
 
   const handleToggleStatus = (id: number, currentStatus: boolean) => {
     onToggleStatus(id, !currentStatus);
@@ -42,7 +51,7 @@ const TableComponent: React.FC<TableComponentProps> = ({
 
   const filteredData = data.filter((item) => {
     if (filter === "all") {
-      return true; // Show all items
+      return true;
     } else {
       return String(item.active) === filter;
     }
@@ -54,10 +63,32 @@ const TableComponent: React.FC<TableComponentProps> = ({
       )
     : filteredData;
 
+  useEffect(() => {
+    const handleDocumentClick = (event: MouseEvent) => {
+      const target = event.target as HTMLElement;
+
+      if (!target.closest(`.${styles.mark}`)) {
+        setMarkVisible(null);
+      }
+    };
+
+    if (markVisible !== null) {
+      document.addEventListener("click", handleDocumentClick);
+    }
+
+    return () => {
+      document.removeEventListener("click", handleDocumentClick);
+    };
+  }, [markVisible]);
+
   return (
     <div className={styles.table}>
-      {filter === "true" && <p className={styles.tableHeading}>Active Companies</p>}
-      {filter === "false" && <p className={styles.tableHeading}>Closed Companies</p>}
+      {filter === "true" && (
+        <p className={styles.tableHeading}>Active Companies</p>
+      )}
+      {filter === "false" && (
+        <p className={styles.tableHeading}>Closed Companies</p>
+      )}
       {filter === "all" && <p className={styles.tableHeading}>All Companies</p>}
 
       <div className={styles.searchContainer}>
@@ -71,14 +102,15 @@ const TableComponent: React.FC<TableComponentProps> = ({
         />
       </div>
 
-      <Table aria-label="Default table">
+      <Table sortable aria-label="Default table">
         <TableHeader className={styles.tableHeader}>
-          <TableRow>
+          <TableRow className={styles.tableRowHeader}>
             <th className={styles.companyName}>Company Name</th>
+
             <th>Company Type</th>
             <th>Company Code</th>
             <th>Contact Email</th>
-            <th>Phone</th>
+            <th className={styles.phoneCell}>Phone</th>
           </TableRow>
         </TableHeader>
 
@@ -96,58 +128,42 @@ const TableComponent: React.FC<TableComponentProps> = ({
               <TableCell>{company.companyType}</TableCell>
               <TableCell>{company.companyCode}</TableCell>
               <TableCell>{company.contactEmail}</TableCell>
-              <TableCell>{company.Phone}</TableCell>
+              <TableCell className={styles.phoneCell}>
+                {company.Phone}
+              </TableCell>
+
               <TableCell className={styles.markCell}>
-                {/* <PopoverComponent 
-                  /> */}
-                {/* {hoveredCompanyId === company.id ? (
-                  <div
-                    onClick={() =>
-                      handleToggleStatus(company.id, company.active)
-                    }
-                    className={styles.mark}
-                  >
-                    {company.active ? "Mark as Closed" : "Mark as Active"}
-                  </div>
-                ) : company.active ? (
-                  <MoreVertical24Regular className={styles.options} />
+                {company.active ? (
+                  <MoreVertical24Regular
+                    className={styles.options}
+                    onClick={() => setMarkVisible(company.id)}
+                  />
                 ) : (
-                  <MoreVertical24Regular className={styles.options} />
-                )} */}
-
-                {hoveredCompanyId === company.id ? (
-                  <div
-                    onClick={() =>
-                      handleToggleStatus(company.id, company.active)
-                    }
-                    className={styles.mark}
-                  >
-                    {/* {company.active ? "   Mark as Closed" : "Mark as Active"} */}
-
-                    {company.active ? <div className={styles.markDiv}>
-                      <Delete20Regular/>
-                      <p className={styles.markText}>Mark as Closed</p>
-                    
-                    </div> : 
-                    <div className={styles.markDiv}>
-                      <Play20Regular/>
-                      <p className={styles.markText}>Mark as Active</p>
-                    
-                    </div>
-
-                  
-                    
-                    }
-
-
-                  </div>
-                ) : company.active ? (
-                  <MoreVertical24Regular className={styles.options} />
-                ) : (
-                  <MoreVertical24Regular className={styles.options} />
-                
+                  <MoreVertical24Regular
+                    className={styles.options}
+                    onClick={() => setMarkVisible(company.id)}
+                  />
                 )}
-                  
+                {markVisible === company.id && (
+                  <div
+                    className={styles.mark}
+                    onClick={() =>
+                      handleToggleStatus(company.id, company.active)
+                    }
+                  >
+                    {company.active ? (
+                      <div className={styles.markDiv}>
+                        <Delete20Regular />
+                        <p className={styles.markText}>Mark as Closed</p>
+                      </div>
+                    ) : (
+                      <div className={styles.markDiv}>
+                        <Play20Regular />
+                        <p className={styles.markText}>Mark as Active</p>
+                      </div>
+                    )}
+                  </div>
+                )}
               </TableCell>
             </TableRow>
           ))}

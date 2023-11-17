@@ -24,21 +24,11 @@
   }
 
   .popoverSurface {
-     border: none !important;
-     box-shadow: none !important;
-
-    border-bottom-width: 0px;
-  border-top-style: none !important;
-  // border-bottom-color: red;
-  // border-top-color: var(--colorTransparentStroke);
-
-    border-top-style: none !important;
-
-    border-bottom-width: 0px;
-
-    border-top-width: 0px;
-
+    border: none !important;
     box-shadow: none !important;
-
+    border-bottom-width: 0;
+    border-top-style: none !important;
+    border-top-width: 0;
+    box-shadow: none !important;
   }
 }

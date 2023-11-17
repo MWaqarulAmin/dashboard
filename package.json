@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@fluentui/react-components": "^9.39.0",
+    "cors": "^2.8.5",
     "next": "14.0.2",
     "react": "^18",
     "react-dom": "^18",

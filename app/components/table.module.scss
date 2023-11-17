@@ -9,40 +9,45 @@
 
 .options {
   cursor: pointer;
+  color: #000000e1;
+  position: absolute;
 }
 
 .mark {
   background-color: rgb(255, 255, 255);
-  box-shadow: 0 2px 16px rgba(0, 0, 0, 0.1);
-
+  box-shadow: 0 2px 16px rgba(0, 0, 0, 0.247);
   font-size: 12px;
-  // display: flex;
-  // align-items: baseline;
-  // justify-content: left;
   border: #49484818 1px solid;
   cursor: pointer;
-  margin: 0;
   border-bottom: 0.5px solid #a0a0a070;
   border-radius: 4px;
-  padding: 6px;
+  padding: 18px;
+  padding-right: 0px;
   color: rgba(0, 0, 0, 0.897);
-  width: 180px;
+  width: 290px;
   font-weight: 400;
-}
-
-
-.markDiv{
+  margin-right: 11px;
   display: flex;
-  margin: 0;
- 
-
- 
- }
-
- .markText {
-  padding-left: 6px;
+  z-index: 999;
+  margin-top: 15px;
 }
 
+.markDiv {
+  display: flex;
+  justify-content: left;
+  align-items: center;
+  margin: 0;
+  padding: 0px;
+  background-color: rgb(255, 255, 255);
+  width: 250px;
+  color: #4b4b4bd2;
+}
+
+.markText {
+  padding-left: 6px;
+  font-size: 14px;
+  font-weight: 500;
+}
 
 .table {
   .tableHeading {
@@ -51,41 +56,51 @@
     margin: 30px 30px 0;
   }
 
- 
   .tableHeader {
-    // background-color: #454545;
-    // display: flex;
     align-items: flex-start;
-  
+  }
+
+  .tableRowHeader {
+    border-bottom: 1px solid rgba(114, 114, 114, 0.185);
   }
 
   .tableRow {
     color: rgba(22, 22, 22, 0.658);
     font-size: 14px;
     font-weight: 500;
+    border-bottom: 1px solid rgba(114, 114, 114, 0.185);
+    transition: background-color 0.3s ease;
+  }
+
+  .tableRow:hover {
+    background-color: #f7fff1;
   }
 
   th,
   td {
     text-align: left;
-    padding: 8px; 
+    padding: 8px;
   }
 
   th {
-    font-size: 16px;
+    font-size: 15px;
     font-weight: 600;
   }
 
-  .companyName{
+  .companyName {
     padding: 0 100px 0 45px;
     width: 46%;
   }
 
-  .markCell {
+  .phoneCell {
+    margin: 0px;
+    padding-left: 80px;
+  }
 
+  .markCell {
     display: flex;
     justify-content: right;
-    padding-right: 35px;
+    padding-right: 85px;
   }
 }
 
